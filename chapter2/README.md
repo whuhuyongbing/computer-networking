@@ -10,29 +10,32 @@ segment sizes.
 ## Addressing Processes
 To identify the receiving process, two pieces of information need to be specified: (1) the address of the host and (2) an identifier that specifies the receiving process in the destination host.
 
--In the Internet, the host is identified by its IP address
--A destination port number is to identify receiving process
+- In the Internet, the host is identified by its IP address
+- A destination port number is to identify receiving process
 
-##overview of HTTP
+## overview of HTTP
 
 -Each URL has two components: the hostname of the server that houses the object and the object’s path name
 -stateless protocol: an HTTP server maintains no information about the clients. If a particular client asks for the same object twice in a period of a few seconds, the server does not respond by saying that it just served the object to the client; instead, the server resends the object, as it has completely forgotten what it did earlier
 
 - Non-Persistent and Persistent Connections
 
--round-trip time (RTT): which is the time it takes for a small packet to travel from client to server and then back to the client.
+- round-trip time (RTT): which is the time it takes for a small packet to travel from client to server and then back to the client.
 
-GET /somedir/page.html HTTP/1.1 
-Host: www.someschool.edu 
+GET /somedir/page.html HTTP/1.1
+
+Host: www.someschool.edu
+
 Connection: close
+
 User-agent: Mozilla/5.0 Accept-language: fr
 
 The first line of an HTTP request message is called the **request line**; the subsequent lines are called the **header lines**
 
 The request line has three fields: 
--the method field: post, get, head, put, delete 
--the URL field
--the HTTP version field
+- the method field: post, get, head, put, delete 
+- the URL field
+- the HTTP version field
 
 HTTP/1.1 200 OK
 Connection: close
