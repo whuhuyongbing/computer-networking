@@ -22,12 +22,9 @@ To identify the receiving process, two pieces of information need to be specifie
 
 - round-trip time (RTT): which is the time it takes for a small packet to travel from client to server and then back to the client.
 
-GET /somedir/page.html HTTP/1.1
-
-Host: www.someschool.edu
-
-Connection: close
-
+GET /somedir/page.html HTTP/1.1  
+Host: www.someschool.edu  
+Connection: close  
 User-agent: Mozilla/5.0 Accept-language: fr
 
 The first line of an HTTP request message is called the **request line**; the subsequent lines are called the **header lines**
@@ -37,13 +34,13 @@ The request line has three fields:
 - the URL field
 - the HTTP version field
 
-HTTP/1.1 200 OK
-Connection: close
-Date: Tue, 18 Aug 2015 15:44:04 GMT
-Server: Apache/2.2.3 (CentOS) Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT Content-Length: 6821
-Content-Type: text/html
-
-(data data data data data ...)
+HTTP/1.1 200 OK  
+Connection: close  
+Date: Tue, 18 Aug 2015 15:44:04 GMT  
+Server: Apache/2.2.3 (CentOS) Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT Content-Length: 6821  
+Content-Type: text/html  
+                            
+(data data data data data ...)  
 
 It has three sections: an initial status line, six header lines, and then the entity body。
 
