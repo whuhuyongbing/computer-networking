@@ -22,6 +22,8 @@ To identify the receiving process, two pieces of information need to be specifie
 
 - round-trip time (RTT): which is the time it takes for a small packet to travel from client to server and then back to the client.
 
+### Request message
+
 	GET /somedir/page.html HTTP/1.1  
 	Host: www.someschool.edu  
 	Connection: close  
@@ -30,9 +32,11 @@ To identify the receiving process, two pieces of information need to be specifie
 - The first line of an HTTP request message is called the **request line**; the subsequent lines are called the **header lines**
 
 - The request line has three fields: 
--- the method field: post, get, head, put, delete 
--- the URL field
--- the HTTP version field
+	- the method field: post, get, head, put, delete 
+	- the URL field
+	- the HTTP version field
+
+### Response message
 
 	HTTP/1.1 200 OK  
 	Connection: close  
