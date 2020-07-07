@@ -15,8 +15,8 @@ To identify the receiving process, two pieces of information need to be specifie
 
 ## overview of HTTP
 
--Each URL has two components: the hostname of the server that houses the object and the object’s path name
--stateless protocol: an HTTP server maintains no information about the clients. If a particular client asks for the same object twice in a period of a few seconds, the server does not respond by saying that it just served the object to the client; instead, the server resends the object, as it has completely forgotten what it did earlier
+- Each URL has two components: the hostname of the server that houses the object and the object’s path name
+- stateless protocol: an HTTP server maintains no information about the clients. If a particular client asks for the same object twice in a period of a few seconds, the server does not respond by saying that it just served the object to the client; instead, the server resends the object, as it has completely forgotten what it did earlier
 
 - Non-Persistent and Persistent Connections
 
@@ -27,12 +27,12 @@ To identify the receiving process, two pieces of information need to be specifie
 	Connection: close  
 	User-agent: Mozilla/5.0 Accept-language: fr
 
-The first line of an HTTP request message is called the **request line**; the subsequent lines are called the **header lines**
+- The first line of an HTTP request message is called the **request line**; the subsequent lines are called the **header lines**
 
-The request line has three fields: 
-- the method field: post, get, head, put, delete 
-- the URL field
-- the HTTP version field
+- The request line has three fields: 
+-- the method field: post, get, head, put, delete 
+-- the URL field
+-- the HTTP version field
 
 	HTTP/1.1 200 OK  
 	Connection: close  
@@ -40,7 +40,7 @@ The request line has three fields:
 	Server: Apache/2.2.3 (CentOS) Last-Modified: Tue, 18 Aug 2015 15:11:03 GMT Content-Length: 6821  
 	Content-Type: text/html  
                             
-(data data data data data ...)  
+	(data data data data data ...)  
 
-It has three sections: an initial status line, six header lines, and then the entity body。
+- It has three sections: an initial status line, six header lines, and then the entity body。
 
