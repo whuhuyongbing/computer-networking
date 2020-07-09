@@ -56,7 +56,19 @@ UDP takes messages from the application process, attaches source and destination
 - **No connection state**.TCP maintains connection state in the end systems. This connection state includes receive and send buffers, congestion-control parameters, and sequence and acknowledgment number parameters. We will see in Section 3.5 that this state information is needed to implement TCP’s reliable data transfer service and to provide congestion control. UDP, on the other hand, does not maintain connection state and does not track any of these parameters. For this reason, a server devoted to a particular application can typically support many more active clients when the application runs over UDP rather than TCP.
 - **Small packet header overhead** The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.
 ### UDP Segment Structure
-![image info](./fig3.7.png =250x)
+![image info](./fig3.7.png)
+
+The UDP header has only four fields, each consisting of two bytes. The length field specifies the number of bytes in the UDP segment (header plus data). The checksum is used by the receiving host to check whether errors have been introduced into the segment.
+
+
+### UDP Checksum
+
+The UDP checksum provides for error detection. That is, the checksum is used to determine whether bits within the UDP segment have been altered (for example, by noise in the links or while stored in a router) as it moved from source to destination.
+
+UDP at the sender side performs the 1s complement of the sum of all the 16-bit words in the segment, with any overflow encountered during the sum being wrapped around. At the receiver, all four 16-bit words are added, including the checksum. If no errors are introduced into the packet, then clearly the sum at the receiver will be 1111111111111111
+**wrap around**: overflow carries on the left are added back on the right.
+
+
 
 
 
