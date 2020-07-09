@@ -51,15 +51,15 @@ One subtle difference between a TCP socket and a UDP socket is that a TCP socket
 
 UDP takes messages from the application process, attaches source and destination port number fields for the multiplexing/demultiplexing service, adds two other small fields, and passes the resulting segment to the network layer.
 
-- **Finer application-level control over what data is sent, and when**
-	UDP will package the data inside a UDP segment and immediately pass the segment to the network layer.
-	TCP
-		- has a congestion-control mechanism that throttles the transport-layer TCP sender when one or more links between the source and destination hosts become excessively congested.
-		- TCP will also continue to resend a segment until the receipt of the segment has been acknowledged by the destination, regardless of how long reliable delivery takes.
+- **Finer application-level control over what data is sent, and when**. UDP will package the data inside a UDP segment and immediately pass the segment to the network layer. TCP has a congestion-control mechanism that throttles the transport-layer TCP sender when one or more links between the source and destination hosts become excessively congested. TCP will also continue to resend a segment until the receipt of the segment has been acknowledged by the destination, regardless of how long reliable delivery takes. Since real-time applications often require a minimum sending rate, do not want to overly delay segment transmission, and can tolerate some data loss, TCP’s service model is not particularly well matched to these applications’ needs.
+- **No connection establishment** UDP does not introduce any delay to establish a connection unlike the tcp that needs build connection before sending data. 
+- **No connection state**.TCP maintains connection state in the end systems. This connection state includes receive and send buffers, congestion-control parameters, and sequence and acknowledgment number parameters. We will see in Section 3.5 that this state information is needed to implement TCP’s reliable data transfer service and to provide congestion control. UDP, on the other hand, does not maintain connection state and does not track any of these parameters. For this reason, a server devoted to a particular application can typically support many more active clients when the application runs over UDP rather than TCP.
+- **Small packet header overhead** The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.
+### UDP Segment Structure
+![image info](./fig3.7)
 
-	Since real-time applications often require a minimum sending rate, do not want to overly delay segment transmission, and can tolerate some data loss, TCP’s service model is not particularly well matched to these applications’ needs.
 
-	
+
 
 
 
