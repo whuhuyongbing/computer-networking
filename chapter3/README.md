@@ -183,6 +183,11 @@ SR receiver events and actions:
 ![image info](./fig25.png)
 
 
+### summarize
+
+![image info](./tab3.1.png)
+
+
 
 
 
