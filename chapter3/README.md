@@ -262,19 +262,20 @@ It is helpful to think of the timer as being associated with the oldest unacknow
 **Fast Retransmit**
 
 ![image info](./img/tab2.png)
-	event: ACK received, with ACK field value of y 
-			if (y > SendBase) {
-				SendBase=y
-				if (there are currently any not yet acknowledged segments)
-               		start timer
-            } else {/* a duplicate ACK for already ACKed
-		       segment */
-		   		increment number of duplicate ACKs received for y
-			if (number of duplicate ACKS received for y==3)
-		       /* TCP fast retransmit */
-		       resend segment with sequence number y
-		   }
-		break;
+	event: ACK received, with ACK field value of y  
+			if (y > SendBase) {  
+				SendBase=y  
+				if (there are currently any not yet acknowledged segments)  
+               		start timer  
+            } else {/* a duplicate ACK for already ACKed  
+		       segment */  
+		   		increment number of duplicate ACKs received for y  
+			if (number of duplicate ACKS received for y==3)  
+		       /* TCP fast retransmit */  
+		       resend segment with sequence number y  
+		   }  
+		break;  
+
 
 
 
