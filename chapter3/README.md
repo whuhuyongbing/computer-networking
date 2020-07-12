@@ -249,6 +249,34 @@ same way that we studied in Section 3.4.
 Given values of EstimatedRTT and DevRTT, what value should be used for TCP’s timeout interval?
 - Clearly, the interval should be greater than or equal to EstimatedRTT, or unnecessary retransmissions would be sent. But the timeout interval should not be too much larger than EstimatedRTT; otherwise, when a segment is lost, TCP would not quickly retransmit the segment, leading to large data transfer delays. It is therefore desirable to set the timeout equal to the EstimatedRTT plus some margin. The margin should be large when there is a lot of fluctuation in the **SampleRTT** values; it should be small when there is little fluctuation. The value of **DevRTT** should thus come into play here. All of these considerations are taken into account in TCP’s method for determining the retransmission timeout interval:
 	**TimeoutInterval=EstimatedRTT+4⋅DevRTT**
+An initial TimeoutInterval value of 1 second is recommended [RFC 6298]. Also, when a timeout occurs, the value of TimeoutInterval is doubled to avoid a premature timeout occurring for a subsequent segment that will soon be acknowledged. However, as soon as a segment is received and EstimatedRTT is updated, the TimeoutInterval is again computed using the formula above.
+
+
+### Reliable Data Transfer
+![image info](./img/33.png)
+
+It is helpful to think of the timer as being associated with the oldest unacknowledged segment.The expiration interval for this timer is the **TimeoutInterval**, which is calculated from **EstimatedRTT** and **DevRTT**.
+
+**Doubling the Timeout Interval.** each time TCP retransmits, it sets the next timeout interval to twice the previous value,rather than deriving it from the last **EstimatedRTT** and **DevRTT**. However, whenever the timer is started after either of the two other events (that is, data received from application above, and ACK received), the TimeoutInterval is derived from the most recent values of EstimatedRTT and DevRTT. This mechanism provides a limited form of congestion control. 
+
+**Fast Retransmit**
+
+![image info](./img/tab2.png)
+	event: ACK received, with ACK field value of y 
+			if (y > SendBase) {
+				SendBase=y
+				if (there are currently any not yet acknowledged segments)
+               		start timer
+            } else {/* a duplicate ACK for already ACKed
+		       segment */
+		   		increment number of duplicate ACKs received for y
+			if (number of duplicate ACKS received for y==3)
+		       /* TCP fast retransmit */
+		       resend segment with sequence number y
+		   }
+		break;
+
+
 
 
 
